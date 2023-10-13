@@ -1,4 +1,4 @@
-# A simple commandline chat for phi-1.5 model
+# Simple command line chat for phi-1.5 model
 
 
 
