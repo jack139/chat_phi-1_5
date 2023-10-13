@@ -5,6 +5,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--base_model', default="microsoft/phi-1_5", type=str)
+parser.add_argument('--max_length', default=200, type=int)
 args = parser.parse_args()
 
 if torch.cuda.is_available():
@@ -31,7 +32,7 @@ with torch.no_grad():
             break
 
         inputs = tokenizer(raw_input_text, return_tensors="pt", return_attention_mask=False)
-        outputs = model.generate(**inputs, max_length=200)
+        outputs = model.generate(**inputs, max_length=args.max_length)
         response = tokenizer.batch_decode(outputs)[0]
         print("Response: ", response)
         print("\n")
