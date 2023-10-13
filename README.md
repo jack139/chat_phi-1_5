@@ -17,7 +17,7 @@ Load model phi-1.5 ...
 Time elapsed: 18.459 sec.
 Start inference mode.
 =====================================================================================
-Input:I want to write a quick sort program in python, the code is                                   
+Prompt:I want to write a quick sort program in python, the code is                                   
 Response:  I want to write a quick sort program in python, the code is as follows:
 def quick_sort(arr):
     if len(arr) <= 1:
