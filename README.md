@@ -5,7 +5,7 @@
 ## Run
 
 ```bash
-python3 chat.py
+python3 chat.py --model_path "microsoft"
 ```
 
 

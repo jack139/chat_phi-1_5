@@ -4,7 +4,7 @@ import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--base_model', default="microsoft/phi-1_5", type=str)
+parser.add_argument('--model_path', default=".", type=str)
 parser.add_argument('--max_length', default=200, type=int)
 parser.add_argument('--no_compile', action='store_true', help='do not compile model (PyTorch < 2.0)')
 args = parser.parse_args()
@@ -17,7 +17,7 @@ else:
 
 start = time.time()
 print("Load model phi-1.5 ...")
-model = AutoModelForCausalLM.from_pretrained(args.base_model, torch_dtype=torch.bfloat16, trust_remote_code=True)
+model = AutoModelForCausalLM.from_pretrained(f"{args.model_path}/phi-1_5", torch_dtype=torch.bfloat16, trust_remote_code=True)
 tokenizer = AutoTokenizer.from_pretrained(args.base_model, trust_remote_code=True)
 if not args.no_compile:
     print("compiling the model... (takes a ~minute)")
