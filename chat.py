@@ -18,7 +18,7 @@ else:
 start = time.time()
 print("Load model phi-1.5 ...")
 model = AutoModelForCausalLM.from_pretrained(f"{args.model_path}/phi-1_5", torch_dtype=torch.bfloat16, trust_remote_code=True)
-tokenizer = AutoTokenizer.from_pretrained(args.base_model, trust_remote_code=True)
+tokenizer = AutoTokenizer.from_pretrained(f"{args.model_path}/phi-1_5", trust_remote_code=True)
 if not args.no_compile:
     print("compiling the model... (takes a ~minute)")
     model = torch.compile(model) # requires PyTorch 2.0 (optional)
